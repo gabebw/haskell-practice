@@ -19,3 +19,11 @@ removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z'] ]
 
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y + z
+
+boomBangs xs = [ if x < 10 then "Boom!" else "Bang" | x <- xs ]
+
+oddBoomBangs xs = [ if x < 10 then "Boom!" else "Bang" | x <- xs, odd x ]
+
+-- Integral because that's what odd takes in
+oddNumbers :: (Integral a) => [a] -> [a]
+oddNumbers xs = filter odd xs
