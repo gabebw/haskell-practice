@@ -38,10 +38,10 @@ main = do
   input <- askForInput
   let number = stringToInteger input
       array = buildListOfSums $ number
-  putStrLn $ show number
+  print number
   printOutEachElementIn $ array
   where
-    printOutEachElementIn = mapM_ (putStrLn . show)
+    printOutEachElementIn = mapM_ print
     stringToInteger = read
     askForInput = do
       putStr "Enter a number> "
