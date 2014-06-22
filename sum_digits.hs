@@ -31,10 +31,12 @@ buildListOfSums number
       summed = sumDigits number
       listOfSums = buildListOfSums summed
 
+printOutEachElementIn = mapM_ (putStrLn . show)
+
 main = do
   putStr "Enter a number> "
   hFlush stdout
   number <- getLine
   putStrLn number
-  let array = map show $ buildListOfSums $ stringToInteger number
-  mapM_ putStrLn array
+  let array = buildListOfSums $ stringToInteger number
+  printOutEachElementIn array
