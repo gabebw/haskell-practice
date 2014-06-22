@@ -21,8 +21,6 @@ splitDigits t
 sumDigits :: Integral a => a -> a
 sumDigits = sum . splitDigits
 
-stringToInteger = read
-
 buildListOfSums :: Integral a => a -> [a]
 buildListOfSums number
   | number < 10 = []
@@ -31,12 +29,16 @@ buildListOfSums number
       summed = sumDigits number
       listOfSums = buildListOfSums summed
 
-printOutEachElementIn = mapM_ (putStrLn . show)
-
 main = do
-  putStr "Enter a number> "
-  hFlush stdout
-  number <- getLine
-  putStrLn number
-  let array = buildListOfSums $ stringToInteger number
-  printOutEachElementIn array
+  input <- askForInput
+  let number = stringToInteger input
+      array = buildListOfSums $ number
+  putStrLn $ show number
+  printOutEachElementIn $ array
+  where
+    printOutEachElementIn = mapM_ (putStrLn . show)
+    stringToInteger = read
+    askForInput = do
+      putStr "Enter a number> "
+      hFlush stdout
+      getLine
