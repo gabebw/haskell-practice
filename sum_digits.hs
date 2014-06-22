@@ -3,6 +3,8 @@
 -- 15
 -- 6
 
+import System.IO (hFlush, stdout)
+
 byTen :: Integral a => a -> (a, a)
 byTen a = divMod a 10
 
@@ -30,9 +32,9 @@ buildListOfSums number
       listOfSums = buildListOfSums summed
 
 main = do
-  putStrLn "Enter a number > "
+  putStr "Enter a number> "
+  hFlush stdout
   number <- getLine
-  putStrLn "---- Sums:"
   putStrLn number
   let array = map show $ buildListOfSums $ stringToInteger number
   mapM_ putStrLn array
