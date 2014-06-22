@@ -1,5 +1,10 @@
 -- Sum digits
--- > 12345
+-- http://www.reddit.com/r/dailyprogrammer/comments/1fnutb/06413_challenge_128_easy_sumthedigits_part_ii/
+--
+-- Example:
+-- ./sum_digits
+-- Enter a number> 12345
+-- 12345
 -- 15
 -- 6
 
