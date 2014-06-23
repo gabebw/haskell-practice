@@ -7,25 +7,23 @@
 import System.IO (hFlush, stdout)
 
 notSpace :: Char -> Bool
-notSpace = not . isSpace
-  where
-    isSpace = (`elem` " ")
+notSpace = (/= ' ')
 
 isVowel :: Char -> Bool
 isVowel = (`elem` "aeiou")
 
 withoutVowels :: String -> String
-withoutVowels s = [ l | l <- s, not $ isVowel l, notSpace l ]
+withoutVowels = filter (not .isVowel)
 
 onlyVowels :: String -> String
-onlyVowels s = [ l | l <- s, isVowel l, notSpace l ]
+onlyVowels = filter isVowel
 
 main = do
   input <- askForInput
   putStrLn ""
   putStrLn input
-  putStrLn $ "  No vowels: "++withoutVowels input
-  putStrLn $ "Only vowels: "++onlyVowels input
+  putStrLn $ "  No vowels: " ++ (filter notSpace $ withoutVowels input)
+  putStrLn $ "Only vowels: " ++ (filter notSpace $ onlyVowels input)
   where
     askForInput = do
       putStr "Enter a string to disemvowel> "
