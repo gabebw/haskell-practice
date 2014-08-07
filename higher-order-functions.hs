@@ -34,3 +34,32 @@ flip' f x y = f y x
 map' :: (a -> b) -> [a] -> [b]
 map' f [] = []
 map' f (x:xs) = f x : map' f xs
+
+-- Let's use ~FOLDS~
+maximum' :: (Ord a) => [a] -> a
+maximum' (x:xs) = foldl isBigger x xs
+  where isBigger acc x = if x > acc then x else acc
+
+maximum'' :: (Ord a) => [a] -> a
+maximum'' = foldl1 isBigger
+  where isBigger acc x = if x > acc then x else acc
+
+maximum''' :: (Ord a) => [a] -> a
+maximum''' = foldr1 isBigger
+  where isBigger x acc = if x > acc then x else acc
+
+reverse' :: (Ord a) => [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) []
+
+product' :: (Num a) => [a] -> a
+product' = foldl1 (*)
+
+sum' :: (Num a) => [a] -> a
+sum' = foldl1 (+)
+
+head' :: [a] -> a
+head' = foldr1 (\x _ -> x)
+
+-- scanl/scanr show intermediate steps of foldl/foldr
+
+-- Function composition: f . g
