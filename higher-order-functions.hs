@@ -35,6 +35,12 @@ map' :: (a -> b) -> [a] -> [b]
 map' f [] = []
 map' f (x:xs) = f x : map' f xs
 
+collatz :: (Integral a) => a => [a]
+collatz 1 = [1]
+collatz n
+  | odd n = n:collatz (n * 3 + 1)
+  | even n = n:collatz (n `div` 2)
+
 -- Let's use ~FOLDS~
 maximum' :: (Ord a) => [a] -> a
 maximum' (x:xs) = foldl isBigger x xs
