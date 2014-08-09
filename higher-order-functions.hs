@@ -73,3 +73,10 @@ head' = foldr1 (\x _ -> x)
 -- Point-free style: leave off argument
 withPoint x = ceiling . negate . tan . cos . max 50 x
 pointFree = ceiling . negate . tan . cos . max 50
+
+-- How to use `let` - kind of the opposite of `where`
+oddSquareSum :: Integer
+oddSquareSum =
+    let oddSquares = filter odd $ map (^2) [1..]
+        belowLimit = takeWhile (<10000) oddSquares
+    in  sum belowLimit
