@@ -13,7 +13,7 @@ import Data.Text (splitOn, pack, unpack, Text)
 import Data.List (intercalate)
 
 splitOnD :: String -> [String]
-splitOnD s = map unpack $ splitOn (pack "d") (pack s)
+splitOnD = map unpack . splitOn (pack "d") . pack
 
 generator = mkStdGen 35352341
 
