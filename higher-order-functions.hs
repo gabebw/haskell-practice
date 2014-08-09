@@ -69,3 +69,7 @@ head' = foldr1 (\x _ -> x)
 -- scanl/scanr show intermediate steps of foldl/foldr
 
 -- Function composition: f . g
+
+-- Point-free style: leave off argument
+withPoint x = ceiling . negate . tan . cos . max 50 x
+pointFree = ceiling . negate . tan . cos . max 50
