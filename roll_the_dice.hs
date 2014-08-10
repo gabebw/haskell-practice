@@ -18,14 +18,10 @@ splitOnD = map unpack . splitOn (pack "d") . pack
 generator = mkStdGen 35352341
 
 numberOfRolls :: String -> Int
-numberOfRolls s = read $ split !! 0
-  where
-    split = splitOnD s
+numberOfRolls = read . (!! 0) . splitOnD
 
 faces :: String -> Int
-faces s = read $ split !! 1
-  where
-    split = splitOnD s
+faces = read . (!! 1) . splitOnD
 
 joinWithSpaces :: [String] -> String
 joinWithSpaces = intercalate " "
