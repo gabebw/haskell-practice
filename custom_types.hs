@@ -33,3 +33,13 @@ baseCircle r = Circle (Point 0 0) r
 
 baseRectangle :: Float -> Float -> Shape
 baseRectangle width height = Rectangle (Point 0 0) (Point width height)
+
+-- Record syntax!
+-- now Haskell automatically gives us `flavor`, `firstName`, etc functions
+data Person = Person { firstName :: String
+                     , lastName :: String
+                     , age :: Int
+                     , height :: Float
+                     , phoneNumber :: String
+                     , flavor :: String
+                     } deriving (Show)
