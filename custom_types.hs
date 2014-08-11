@@ -1,5 +1,16 @@
 -- http://learnyouahaskell.com/making-our-own-types-and-typeclasses
 
+-- Doing `Point(..)` exports the value constructor, `Point` doesn't
+
+module Shapes
+( Point(..)
+, Shape (..)
+, surface
+, nudge
+, baseCircle
+, baseRectangle
+) where
+
 -- Point is the name of the type and the value constructor
 -- `deriving (Show)` automagically makes that type part of the Show typeclass
 data Point = Point Float Float deriving (Show)
