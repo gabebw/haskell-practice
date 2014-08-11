@@ -16,3 +16,9 @@ nudge (Rectangle (Point x1 y1) (Point x2 y2)) dx dy = Rectangle p1 p2
   where
     p1 = Point (x1+dx) (y2+dy)
     p2 = Point (x2+dx) (y2+dy)
+
+baseCircle :: Float -> Shape
+baseCircle r = Circle (Point 0 0) r
+
+baseRectangle :: Float -> Float -> Shape
+baseRectangle width height = Rectangle (Point 0 0) (Point width height)
