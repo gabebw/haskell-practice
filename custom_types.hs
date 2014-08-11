@@ -36,6 +36,10 @@ baseRectangle width height = Rectangle (Point 0 0) (Point width height)
 
 -- Record syntax!
 -- now Haskell automatically gives us `flavor`, `firstName`, etc functions
+-- Can create person two ways:
+--    let person = Person "g" "bw" 72 34....etc
+--  or
+--    let person = Person {firstName="g", age=72, etc}
 data Person = Person { firstName :: String
                      , lastName :: String
                      , age :: Int
