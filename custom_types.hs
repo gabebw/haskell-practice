@@ -1,9 +1,9 @@
 -- http://learnyouahaskell.com/making-our-own-types-and-typeclasses
 
--- Circle is a constructor that takes three floats
--- Rectangle is a constructor that takes four floats
+-- Point is the name of the type and the value constructor
 -- `deriving (Show)` automagically makes that type part of the Show typeclass
-data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (Show)
+data Point = Point Float Float deriving (Show)
+data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
 
 -- Note that surface takes a Shape - Circle is not a type, but Shape is
 surface :: Shape -> Float
