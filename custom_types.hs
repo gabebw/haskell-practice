@@ -52,3 +52,14 @@ data Person = Person { firstName :: String
 --The value `Just 'a'` has a type of `Maybe Char`
 --The value `Nothing` has a type of `Maybe a`
 data Maybe a = Nothing | Just a
+
+
+-- `type` makes synonyms, it doesn't define new types
+-- type String = [Char]
+
+
+-- Tuesday > Monday => True
+-- minBound :: Dady => Monday } due to Bounded typeclass
+-- maxBound :: Dady => Sunday }
+data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday
+  deriving (Eq, Ord, Show, Read, Bounded, Enum)
