@@ -47,3 +47,8 @@ data Person = Person { firstName :: String
                      , phoneNumber :: String
                      , flavor :: String
                      } deriving (Show)
+
+-- Maybe is a type constructor: it takes parameters (`a`) to produce new types
+--The value `Just 'a'` has a type of `Maybe Char`
+--The value `Nothing` has a type of `Maybe a`
+data Maybe a = Nothing | Just a
