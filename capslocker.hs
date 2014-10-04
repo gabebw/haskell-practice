@@ -1,8 +1,10 @@
 import Data.Char
 
-main = do
-  contents <- getContents
-  putStrLn (map toUpper contents)
+main = interact shortLinesOnly
+-- `interact shortLinesOnly` is just like doing this:
+-- do
+--    contents <- getContents
+--    putStr (shortLinesOnly contents)
 
 shortLinesOnly :: String -> String
 shortLinesOnly input =
