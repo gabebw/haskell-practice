@@ -93,3 +93,19 @@ treeElem x (Node a left right)
   | x == a = True
   | x < a = treeElem x left
   | x > a = treeElem x right
+
+-- To create a new TrafficLight: `let light = Red`, etc
+data TrafficLight = Red | Yellow | Green
+
+-- Now TrafficLight is an instance of the Eq typeclass
+instance Eq TrafficLight where
+  Red == Red = True
+  Yellow == Yellow = True
+  Green == Green = True
+  _ == _ = False
+
+-- Now TrafficLight is an instance of the Show typeclass
+instance Show TrafficLight where
+  show Red = "Red light"
+  show Yellow = "Yellow light"
+  show Green = "Green light"
