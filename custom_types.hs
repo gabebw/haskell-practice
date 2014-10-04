@@ -51,15 +51,45 @@ data Person = Person { firstName :: String
 -- Maybe is a type constructor: it takes parameters (`a`) to produce new types
 --The value `Just 'a'` has a type of `Maybe Char`
 --The value `Nothing` has a type of `Maybe a`
+-- Nothing and Just are value constructors
 data Maybe a = Nothing | Just a
-
 
 -- `type` makes synonyms, it doesn't define new types
 -- type String = [Char]
-
 
 -- Tuesday > Monday => True
 -- minBound :: Dady => Monday } due to Bounded typeclass
 -- maxBound :: Dady => Sunday }
 data Day = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday
   deriving (Eq, Ord, Show, Read, Bounded, Enum)
+
+
+-- Recursive constructor
+-- data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)
+-- Custom infix operator
+infixr 5 :-:
+data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+
+infixr 5 .++
+(.++) :: List a -> List a -> List a
+Empty .++ ys = ys
+(x :-: xs) .++ ys = x :-: (xs .++ ys)
+
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
+
+singleton :: a -> Tree a
+singleton x = Node x EmptyTree EmptyTree
+
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
+treeInsert x EmptyTree = singleton x
+treeInsert x (Node a left right)
+  | x == a = Node x left right
+  | x < a = Node a (treeInsert x left) right
+  | x > a = Node a left (treeInsert x right)
+
+treeElem :: (Ord a) => a -> Tree a -> Bool
+treeElem x EmptyTree = False
+treeElem x (Node a left right)
+  | x == a = True
+  | x < a = treeElem x left
+  | x > a = treeElem x right
