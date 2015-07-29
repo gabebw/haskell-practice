@@ -41,7 +41,6 @@ is a String.
 
 String is 100% exactly the same as `[Char]`.
 
-
 Type Variables
 ==============
 
