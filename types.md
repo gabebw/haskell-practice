@@ -24,21 +24,13 @@ minimum is -2147483648.
 Integer
 -------
 
-Integer stands for, er ... also integer. The main difference is that it's not
-bounded so it can be used to represent really really big numbers. I mean like
-really big. Int, however, is more efficient.
+Unbounded version of Int, for really big numbers.
 
 
 Float
 -----
 
 Float is a real floating point with single precision.
-
-Double
-------
-
-Double is a real floating point with double the precision!
-
 
 
 Bool
