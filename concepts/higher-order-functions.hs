@@ -1,8 +1,6 @@
 -- map a map!
 -- map (map (^2)) [[1,2],[3,4,5,6],[7,8]]
 
-
--- Hey, guards are back
 filter' :: (a -> Bool) -> [a] -> [a]
 filter' _ [] = []
 filter' p (x:xs)
@@ -12,6 +10,7 @@ filter' p (x:xs)
 -- Parentheses in type declaration are mandatory, because it's a function
 applyTwice :: (a -> a) -> a -> a
 applyTwice f x = f (f x)
+applyTwice' f = f . f
 
 -- (a -> b -> c) is a function that takes two arguments of type a and b and
 -- returns something of type c
@@ -30,16 +29,9 @@ zip' (x:xs) (y:ys) = [(x, y)] ++ zip' xs ys
 flip' :: (a -> b -> c) -> b -> a -> c
 flip' f x y = f y x
 
--- :)
 map' :: (a -> b) -> [a] -> [b]
 map' f [] = []
 map' f (x:xs) = f x : map' f xs
-
-collatz :: (Integral a) => a => [a]
-collatz 1 = [1]
-collatz n
-  | odd n = n:collatz (n * 3 + 1)
-  | even n = n:collatz (n `div` 2)
 
 -- Let's use ~FOLDS~
 maximum' :: (Ord a) => [a] -> a
@@ -68,15 +60,14 @@ head' = foldr1 (\x _ -> x)
 
 -- scanl/scanr show intermediate steps of foldl/foldr
 
--- Function composition: f . g
 
--- Point-free style: leave off argument
+-- Same function, with and without points
+-- Function composition: f . g
 withPoint x = ceiling . negate . tan . cos . max 50 x
 pointFree = ceiling . negate . tan . cos . max 50
 
--- How to use `let` - kind of the opposite of `where`
 oddSquareSum :: Integer
-oddSquareSum =
-    let oddSquares = filter odd $ map (^2) [1..]
-        belowLimit = takeWhile (<10000) oddSquares
-    in  sum belowLimit
+oddSquareSum = sum belowLimit
+    where
+        belowLimit = takeWhile (<10000) allOddSquares
+        allOddSquares = filter odd $ map (^2) [1..]

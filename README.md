@@ -10,9 +10,10 @@ I worked through some of the [99 Haskell Problems][ninety-nine].
 
 [ninety-nine]: http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 
-## learn-you-a-haskell
+## concepts
 
-I worked through Learn You a Haskell and took some notes.
+Some Haskell concepts (like monoids) that I worked through and then wrote down.
+Some of it is from Learn You a Haskell.
 
 ## programs
 
