@@ -29,7 +29,7 @@ mappend [1] [2] == [1, 2]
 mconcat [[3], [4]] == [3, 4]
 ```
 
-## Monoids under Bool
+## Boolean monoids
 
 ```haskell
 -- &&
@@ -45,7 +45,7 @@ Any {getAny = False}
 Any {getAny = True}
 ```
 
-## Monoids under numbers
+## Numerical monoids
 
 ```haskell
 -- Add numbers
@@ -57,7 +57,7 @@ Sum {getSum = 3}
 Product {getProduct = 2}
 ```
 
-## Monoids under Maybe
+## Maybe monoids
 
 ```haskell
 -- First gives the first non-Nothing value
