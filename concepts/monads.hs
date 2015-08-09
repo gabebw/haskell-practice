@@ -15,4 +15,4 @@ fancify = maybeString >>= fancyFunction
 -- Still Nothing after passing it through because
 -- Nothing >>= f is Nothing for all f
 stillNothing :: Nothing
-stillNothing = Nothing >>= fancyFunction  >>= fancyFunction
+stillNothing = Nothing >>= fancyFunction >>= fancyFunction
