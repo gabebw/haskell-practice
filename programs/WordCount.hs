@@ -1,6 +1,8 @@
 module WordCountExercise where
 
 import Data.List (find, delete)
+import Control.Monad ((>=>))
+import System.Environment (getArgs)
 
 data Wordcount = Wordcount String Int deriving (Eq, Show)
 
@@ -27,3 +29,5 @@ findWordCountByWord w wcs = find matchOnWord wcs
 
 baseCount :: String -> Wordcount
 baseCount s = Wordcount s 1
+
+main = getArgs >>= mapM (readFile >=> print . count . words)
