@@ -34,8 +34,8 @@ baseCount s = Wordcount s 1
 --
 -- For each filename passed to this program, it will print out the filename then
 -- print out the top 5 most common words for that file.
-main = getArgs >>= mapM (printAndRead >=> (print . top5 . count . words))
+main = getArgs >>= mapM (printAndRead >=> ((mapM print) . top5 . count . words))
     where
         top5 = take 5 . sortOn reverseCompare
         reverseCompare (Wordcount _ c) = c * (-1)
-        printAndRead s = putStrLn ("\n"++s++"\n") >> readFile s
+        printAndRead s = putStrLn ("\n>> "++s++"\n") >> readFile s
