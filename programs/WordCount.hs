@@ -30,6 +30,10 @@ findWordCountByWord w wcs = find matchOnWord wcs
 baseCount :: String -> Wordcount
 baseCount s = Wordcount s 1
 
+-- Usage: runhaskell Wordcount.hs file1 file2 ...
+--
+-- For each filename passed to this program, it will print out the filename then
+-- print out the top 5 most common words for that file.
 main = getArgs >>= mapM (printAndRead >=> (print . top5 . count . words))
     where
         top5 = take 5 . sortOn reverseCompare
